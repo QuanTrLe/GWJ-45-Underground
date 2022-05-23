@@ -1,0 +1,232 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://shop/shop_UI.gd" type="Script" id=1]
+[ext_resource path="res://valuables/room/room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://valuables/turrets/turret.tscn" type="PackedScene" id=3]
+
+[node name="shop_UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -64.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+room_scene = ExtResource( 2 )
+turret_scene = ExtResource( 3 )
+
+[node name="background" type="Panel" parent="."]
+modulate = Color( 0.0823529, 0.0745098, 0.152941, 0.686275 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="scroll_container" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="grid_container" type="GridContainer" parent="scroll_container"]
+margin_right = 608.0
+margin_bottom = 577.0
+custom_constants/vseparation = 50
+
+[node name="room_misc_label" type="Label" parent="scroll_container/grid_container"]
+margin_right = 608.0
+margin_bottom = 14.0
+text = "I. ROOMS & MISC"
+
+[node name="room_misc" type="GridContainer" parent="scroll_container/grid_container"]
+margin_top = 64.0
+margin_right = 608.0
+margin_bottom = 129.0
+custom_constants/vseparation = 25
+
+[node name="rooms" type="GridContainer" parent="scroll_container/grid_container/room_misc"]
+margin_right = 608.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 25
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/room_misc/rooms"]
+margin_top = 3.0
+margin_right = 207.0
+margin_bottom = 17.0
+text = "Extra room for crops and turrets!"
+
+[node name="room_button" type="Button" parent="scroll_container/grid_container/room_misc/rooms"]
+margin_left = 307.0
+margin_right = 379.0
+margin_bottom = 20.0
+text = "Buy (130)"
+
+[node name="heal" type="GridContainer" parent="scroll_container/grid_container/room_misc"]
+margin_top = 45.0
+margin_right = 608.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 25
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/room_misc/heal"]
+margin_top = 3.0
+margin_right = 157.0
+margin_bottom = 17.0
+text = "Restore your storehouse"
+
+[node name="heal_button" type="Button" parent="scroll_container/grid_container/room_misc/heal"]
+margin_left = 257.0
+margin_right = 329.0
+margin_bottom = 20.0
+text = "Buy (100)"
+
+[node name="objects_label" type="Label" parent="scroll_container/grid_container"]
+margin_top = 179.0
+margin_right = 608.0
+margin_bottom = 193.0
+text = "II. PLACEABLE WARES"
+
+[node name="placeable_objects" type="GridContainer" parent="scroll_container/grid_container"]
+margin_top = 243.0
+margin_right = 608.0
+margin_bottom = 353.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 25
+
+[node name="seed_2" type="GridContainer" parent="scroll_container/grid_container/placeable_objects"]
+margin_right = 608.0
+margin_bottom = 20.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/placeable_objects/seed_2"]
+margin_top = 3.0
+margin_right = 384.0
+margin_bottom = 17.0
+text = "Second seed, takes more time to grow but gives more value"
+
+[node name="seed_2_button" type="Button" parent="scroll_container/grid_container/placeable_objects/seed_2"]
+margin_left = 484.0
+margin_right = 548.0
+margin_bottom = 20.0
+text = "Buy (35)"
+
+[node name="seed_3" type="GridContainer" parent="scroll_container/grid_container/placeable_objects"]
+margin_top = 45.0
+margin_right = 608.0
+margin_bottom = 65.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/placeable_objects/seed_3"]
+margin_top = 3.0
+margin_right = 358.0
+margin_bottom = 17.0
+text = "Third seed, takes little time to grow but gives less value"
+
+[node name="seed_3_button" type="Button" parent="scroll_container/grid_container/placeable_objects/seed_3"]
+margin_left = 458.0
+margin_right = 522.0
+margin_bottom = 20.0
+text = "Buy (35)"
+
+[node name="turret" type="GridContainer" parent="scroll_container/grid_container/placeable_objects"]
+margin_top = 90.0
+margin_right = 608.0
+margin_bottom = 110.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/placeable_objects/turret"]
+margin_top = 3.0
+margin_right = 444.0
+margin_bottom = 17.0
+text = "An strong automatic turret but has very limited range and slow reload"
+
+[node name="turret_button" type="Button" parent="scroll_container/grid_container/placeable_objects/turret"]
+margin_left = 544.0
+margin_right = 608.0
+margin_bottom = 20.0
+text = "Buy (50)"
+
+[node name="upgrade_label" type="Label" parent="scroll_container/grid_container"]
+margin_top = 403.0
+margin_right = 608.0
+margin_bottom = 417.0
+text = "III. UPGRADES"
+
+[node name="upgrades" type="GridContainer" parent="scroll_container/grid_container"]
+margin_top = 467.0
+margin_right = 608.0
+margin_bottom = 577.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 25
+
+[node name="tool_2" type="GridContainer" parent="scroll_container/grid_container/upgrades"]
+margin_right = 499.0
+margin_bottom = 20.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/upgrades/tool_2"]
+margin_top = 3.0
+margin_right = 272.0
+margin_bottom = 17.0
+text = "A better tool for a better harvest efficiency"
+
+[node name="tool_2_button" type="Button" parent="scroll_container/grid_container/upgrades/tool_2"]
+margin_left = 372.0
+margin_right = 436.0
+margin_bottom = 20.0
+text = "Buy (70)"
+
+[node name="canon_damage" type="GridContainer" parent="scroll_container/grid_container/upgrades"]
+margin_top = 45.0
+margin_right = 499.0
+margin_bottom = 65.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/upgrades/canon_damage"]
+margin_top = 3.0
+margin_right = 327.0
+margin_bottom = 17.0
+text = "Better bullets for better defense against the swarm"
+
+[node name="canon_damage_button" type="Button" parent="scroll_container/grid_container/upgrades/canon_damage"]
+margin_left = 427.0
+margin_right = 499.0
+margin_bottom = 20.0
+text = "Buy (110)"
+
+[node name="canon_firerate" type="GridContainer" parent="scroll_container/grid_container/upgrades"]
+margin_top = 90.0
+margin_right = 499.0
+margin_bottom = 110.0
+custom_constants/hseparation = 100
+columns = 3
+
+[node name="Label" type="Label" parent="scroll_container/grid_container/upgrades/canon_firerate"]
+margin_top = 3.0
+margin_right = 323.0
+margin_bottom = 17.0
+text = "Faster main cannon reload for even more pew pew"
+
+[node name="canon_firerate_button" type="Button" parent="scroll_container/grid_container/upgrades/canon_firerate"]
+margin_left = 423.0
+margin_right = 495.0
+margin_bottom = 20.0
+text = "Buy (110)"
+
+[connection signal="pressed" from="scroll_container/grid_container/room_misc/rooms/room_button" to="." method="_on_room_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/room_misc/heal/heal_button" to="." method="_on_heal_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/placeable_objects/seed_2/seed_2_button" to="." method="_on_seed_2_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/placeable_objects/seed_3/seed_3_button" to="." method="_on_seed_3_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/placeable_objects/turret/turret_button" to="." method="_on_turret_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/upgrades/tool_2/tool_2_button" to="." method="_on_tool_2_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/upgrades/canon_damage/canon_damage_button" to="." method="_on_canon_damage_button_pressed"]
+[connection signal="pressed" from="scroll_container/grid_container/upgrades/canon_firerate/canon_firerate_button" to="." method="_on_canon_firerate_button_pressed"]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://menus/menus.gd" type="Script" id=1]
+
+[node name="menus" type="CanvasLayer" groups=["menus"]]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="start" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 40.0
+margin_right = -48.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 0.690196 )
+
+[node name="Label" type="Label" parent="start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = 48.0
+margin_right = -96.0
+margin_bottom = -96.0
+text = "
+   Welcome Mr.Mortimer!
+
+   We have had the honor of having you as our guests in one of our casinos recently and for that, we thank you for your patronage. However, we have recently been informed that you have fallen into an unfavourable economic situation while enjoying yourself at one of our institutes. We also know that you are have not been successful at procuring a mean to escape said situation.
+
+    As such, with the duty as your beloved and trusted casino chain, we had helped you out by sending you to this fabulous farm until you gain 800 gold! The money here is easy and fast to make. Though with legal requirements we must remind you that there are unpreferable creatures up to no good underneath the dirt which will attempt to squander your progress. Though worry not, they will not harm you directly (given that your field is not barren of plants).
+	
+	    Thank you for your continued patronage,
+	    Everwind-Smythe Casinos
+	
+	
+	   - Press E to open and close shop
+	   - Press Space to select and deslect harvest tool
+	   - Press 1,2,3 to choose available seeds
+	   - Press Q to choose the option to plant seeds, which will grow overtime and bring more value.
+	   - Left click to shoot and interact with object, such as placing bought valuables and harvesting.
+	   - Enemies will come as waves with random timings, targeting your plants frst, then you."
+autowrap = true
+
+[node name="start_button" type="Button" parent="start"]
+margin_left = 344.0
+margin_top = 528.0
+margin_right = 476.0
+margin_bottom = 548.0
+text = "Repay your debt"
+
+[node name="win" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="win"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 40.0
+margin_right = -48.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 0.690196 )
+
+[node name="Label" type="Label" parent="win"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = 168.0
+margin_right = -96.0
+margin_bottom = -224.0
+text = "
+   Dear Mr.Mortimer!
+
+   Congratulations Mr.Mortimer! You have been able to repay all of your debt and your feat has been recognized as of this moment! We are glad to see another customer of ours having been able to recover successfuly as such. Please remember, you are always welcomed at our casino institutes, and even our farms. You are free to go back to this farm at any moment and treat it as your home again.
+	
+	   Thank you for your continued patronage,
+	   Everwind-Smythe Casinos"
+autowrap = true
+
+[node name="restart_button" type="Button" parent="win"]
+margin_left = 320.0
+margin_top = 400.0
+margin_right = 452.0
+margin_bottom = 420.0
+text = "Yay!"
+
+[connection signal="pressed" from="start/start_button" to="." method="_on_start_button_pressed"]

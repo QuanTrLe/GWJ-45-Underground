@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/store_house/store_house.gd" type="Script" id=1]
+[ext_resource path="res://player/store_house/bullet/bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/TinyRanch_Structures.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 12 )
+
+[node name="store_house" type="Node2D" groups=["buildings", "store_house"]]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+reload_time = 0.3
+bullet_scene = ExtResource( 2 )
+
+[node name="bullets" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 2, -8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="left wing" type="Sprite" parent="sprite"]
+position = Vector2( -16, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 32, 16 )
+
+[node name="right_wing" type="Sprite" parent="sprite"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 8, 16, 16, 16 )
+
+[node name="silo" type="Sprite" parent="sprite"]
+position = Vector2( 20, -4 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 24 )
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2( 0, -14 )
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 1 )
+
+[node name="reload_time" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="reload_time" to="." method="_on_reload_time_timeout"]

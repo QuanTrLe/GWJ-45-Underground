@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://enemies/enemies_spawner/enemies_spawner.gd" type="Script" id=1]
+[ext_resource path="res://enemies/enemy_normal/enemy_normal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/enemy_special/enemy_elite.tscn" type="PackedScene" id=3]
+
+[node name="enemies_spawner" type="Node2D"]
+position = Vector2( 400, 288 )
+script = ExtResource( 1 )
+normal_enemy_scene = ExtResource( 2 )
+elite_enemy_scene = ExtResource( 3 )
+
+[node name="difficulty_scale" type="Timer" parent="."]
+
+[node name="enemies_normal" type="Node2D" parent="."]
+
+[node name="enemies_elite" type="Node2D" parent="."]
+
+[node name="spawn_position" type="Position2D" parent="."]
+
+[connection signal="timeout" from="difficulty_scale" to="." method="_on_difficulty_scale_timeout"]

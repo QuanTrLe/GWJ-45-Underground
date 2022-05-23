@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tilemap/nature/nature_tileset.tres" type="TileSet" id=1]
+
+[node name="nature_tilemap" type="TileMap"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+show_collision = true
+format = 1

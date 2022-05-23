@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/TinyRanch_Crops.png" type="Texture" id=1]
+[ext_resource path="res://valuables/plants/base/plant_base.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8 )
+
+[node name="plant_3" type="Node2D" groups=["plant", "valuables"]]
+scale = Vector2( 2, 2 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 2 )
+value_increase = 1
+growth_period = 2
+
+[node name="sprite" type="Sprite" parent="."]
+region_rect = Rect2( 24, 24, 0, 0 )
+
+[node name="stage_1" type="Sprite" parent="sprite"]
+position = Vector2( 0, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 88, 8, 8 )
+
+[node name="stage_2" type="Sprite" parent="sprite"]
+visible = false
+position = Vector2( 0, -6 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 84, 8, 12 )
+
+[node name="stage_3" type="Sprite" parent="sprite"]
+visible = false
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 40, 80, 8, 16 )
+
+[node name="stage_4" type="Sprite" parent="sprite"]
+visible = false
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 80, 8, 16 )
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2( 0, -8 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 1 )
+
+[node name="growth_timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]

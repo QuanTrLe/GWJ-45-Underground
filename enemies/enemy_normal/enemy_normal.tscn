@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/0x72_16x16DungeonTileset.v3.png" type="Texture" id=1]
+[ext_resource path="res://enemies/enemy_normal/enemy_normal.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dig"
+length = 0.74
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite/sprite_legs/right_legs:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -3 ), Vector2( 0, 0 ), Vector2( 0, -3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite/sprite_legs/left_legs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ), Vector2( 0, 0 ), Vector2( 0, -3 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 5.0, 0.0, -5.0 ]
+}
+
+[node name="enemy_normal" type="KinematicBody2D" groups=["enemy"]]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+rotation = 0.0872665
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite_legs" type="Sprite" parent="sprite"]
+position = Vector2( 0, 4 )
+scale = Vector2( 1, 0.528284 )
+region_rect = Rect2( 48, 200, 16, 8 )
+
+[node name="right_legs" type="Sprite" parent="sprite/sprite_legs"]
+
+[node name="sprite_leg_1" type="Sprite" parent="sprite/sprite_legs/right_legs"]
+position = Vector2( 6, -6.07166 )
+rotation = -0.501102
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 56, 215, 3, 1 )
+
+[node name="sprite_leg_4" type="Sprite" parent="sprite/sprite_legs/right_legs"]
+position = Vector2( 5, 0 )
+rotation = 3.77082
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 56, 198, 3, 1 )
+
+[node name="sprite_leg_5" type="Sprite" parent="sprite/sprite_legs/right_legs"]
+position = Vector2( 6, -2.99994 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 56, 200, 3, 1 )
+
+[node name="left_legs" type="Sprite" parent="sprite/sprite_legs"]
+position = Vector2( 0, -3 )
+
+[node name="sprite_leg_2" type="Sprite" parent="sprite/sprite_legs/left_legs"]
+position = Vector2( -5, 1 )
+rotation = -0.49008
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 53, 221, 3, 1 )
+
+[node name="sprite_leg_6" type="Sprite" parent="sprite/sprite_legs/left_legs"]
+position = Vector2( -6, -2.28577 )
+rotation = 3.14159
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 52, 193, 4, 1 )
+
+[node name="sprite_leg_3" type="Sprite" parent="sprite/sprite_legs/left_legs"]
+position = Vector2( -5, -6.07166 )
+rotation = 0.420698
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 52, 220, 3, 1 )
+
+[node name="sprite_head" type="Sprite" parent="sprite"]
+position = Vector2( 0, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 176, 16, 16 )
+
+[node name="sprite_body" type="Sprite" parent="sprite"]
+position = Vector2( 0, 4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 200, 16, 8 )
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+position = Vector2( 0, -4 )
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="hitbox"]
+polygon = PoolVector2Array( -4, -2, 5, -2, 5, 7, 1, 12, -1, 12, -4, 8 )
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+anims/dig = SubResource( 1 )
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

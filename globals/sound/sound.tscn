@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://globals/sound/sound.gd" type="Script" id=1]
+[ext_resource path="res://globals/sound/sound_player.tscn" type="PackedScene" id=2]
+
+[node name="sound" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+sound_player_scene = ExtResource( 2 )
+
+[node name="background_audio" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="background_audio" to="." method="_on_AudioStreamPlayer_finished"]
